@@ -4,6 +4,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 from flask import Flask, render_template, request
+from generator.BenAnswer import BenAnswer
 from npc import NPC
 import json
 import time
@@ -12,10 +13,13 @@ import requests
 app = Flask(__name__)
 npc = NPC()
 session = requests.session()
+ben_answer = BenAnswer()
 
+# 测试id
+uid = "0x58002018npc"
 
 def from_benben(question):
-    return None
+    return ben_answer.answer(uid, question)
 
 @app.route('/')
 def chat():
